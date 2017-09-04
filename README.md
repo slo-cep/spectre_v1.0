@@ -18,5 +18,12 @@ ex._name #thread event_type operator_type initial_event_per_window pattern_size 
  step_size num_pre_calc Maxtix_min_factor garbage_state outputfiles... 
 ./main 4 0 0 10000 13 10000 8 0 4000 0.700000 10000 200 120 1 false latencyDetectionFile eventsProcessedPerWorkersFile throughputFile reschedulingFrequencyFile
 
+*To have more insight about the above parameters, please check the code. It is  well commented :)
 
-To have more insight about the above parameters, please check the code. It is  well commented :)
+
+Client Project: It is a plain c++ project. See the bash files to have an idea how run it!
+
+Summery: To run the framework, you can either generate events randomly in the framework or use the client project to push events to the framework.
+
+
+
