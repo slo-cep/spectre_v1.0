@@ -1,6 +1,6 @@
 # spectre_v1.0
 About:
-SPECTRE project is a complex event processing framework that uses the speculation to process dependent widnows of events. For detailed information, see our paper http://2017.middleware-conference.org/accepted.html .
+SPECTRE project is a complex event processing framework that uses the speculation to process dependent widnows of events. For detail description, see our paper http://2017.middleware-conference.org/accepted.html .
 
 Dependencies (Linux):
 1- Install Boost C++ Library (not needed if you want to use only execuatble!)
@@ -21,7 +21,7 @@ ex._name #thread event_type operator_type initial_event_per_window pattern_size 
 *To have more insight about the above parameters, please check the code. It is  well commented :)
 
 
-Client Project: It is a plain c++ project. See the bash files to have an idea how run it!
+Client Project: It is a plain C++ project. See the bash files to have an idea how run it!
 
 Summery: To run the framework, you can either generate events randomly in the framework or use the client project to push events to the framework.
 
