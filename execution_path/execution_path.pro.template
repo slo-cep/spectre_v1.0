@@ -1,0 +1,121 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2016-08-28T15:02:34
+#
+#-------------------------------------------------
+
+QT       -= core gui
+QMAKE_CXXFLAGS+=-g
+#QMAKE_LFLAGS+=-g
+
+TARGET = execution_path
+TEMPLATE = lib
+CONFIG += staticlib
+
+DEFINES += EXECUTION_PATH_LIBRARY
+
+CONFIG += c++14
+
+QMAKE_CXXFLAGS_RELEASE+=-O3
+QMAKE_CXXFLAGS_RELEASE-=-O2
+QMAKE_CXXFLAGS_RELEASE-=-O1
+
+QMAKE_CFLAGS_RELEASE+=-O3
+QMAKE_CFLAGS_RELEASE-=-O2
+QMAKE_CFLAGS_RELEASE-=-O1
+
+#QMAKE_CXXFLAGS += -fsanitize=address
+#QMAKE_LFLAGS += -fsanitize=address
+
+
+SOURCES += \
+    source/feeder/AbstractFeeder.cpp \
+    source/operator/AbstractOperator.cpp \
+    source/operator/SequenceOperator.cpp \
+    source/validator/AbstractValidator.cpp \
+    source/execution_path/ExecutionPath.cpp \
+    source/worker/WorkerThread.cpp \
+    source/feeder/DeterministicFeeder.cpp \
+    source/validator/DeterministicValidator.cpp \
+    source/execution_path/LocalEvent.cpp \
+    source/speculator/AbstractSpeculator.cpp \
+    source/speculator/Speculator.cpp \
+    source/execution_path/Checkpoint.cpp \
+    source/execution_path/Cgroup.cpp \
+    source/path_manager/PathManager.cpp \
+    source/path_manager/GarbageCollectionThread.cpp \
+    source/data_structure/AbstractNode.cpp \
+    source/data_structure/BranchNode.cpp \
+    source/data_structure/ExecutionPathNode.cpp \
+    source/operator/StockRiseOperator.cpp \
+    source/operator/OperatorFactory.cpp \
+    source/operator/RIPOperator.cpp
+
+HEADERS +=\
+    header/feeder/AbstractFeeder.hpp \
+    header/operator/AbstractOperator.hpp \
+    header/operator/SequenceOperator.hpp \
+    header/validator/AbstractValidator.hpp \
+    header/execution_path/ExecutionPath.hpp \
+    header/worker/WorkerThread.hpp \
+    header/feeder/DeterministicFeeder.hpp \
+    header/validator/DeterministicValidator.hpp \
+    header/execution_path/LocalEvent.hpp \
+    header/speculator/AbstractSpeculator.hpp \
+    header/speculator/Speculator.hpp \
+    header/execution_path/Checkpoint.hpp \
+    header/execution_path/Cgroup.hpp \
+    header/path_manager/PathManager.hpp \
+    header/path_manager/GarbageCollectionThread.hpp \
+    header/data_structure/AbstractNode.hpp \
+    header/data_structure/BranchNode.hpp \
+    header/data_structure/ExecutionPathNode.hpp \
+    header/operator/StockRiseOperator.h \
+    header/operator/OperatorFactory.hpp \
+    header/operator/RIPOperator.hpp
+
+unix {
+    target.path = /usr/lib
+    INSTALLS += target
+}
+
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/ -lmerger
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/ -lmerger
+else:unix: LIBS += -L$$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lmerger
+
+INCLUDEPATH += $$PWD/../merger
+DEPENDPATH += $$PWD/../merger
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/libmerger.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/libmerger.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/merger.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/merger.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/libmerger.a
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/ -lcommon
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/ -lcommon
+else:unix: LIBS += -L$$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lcommon
+
+INCLUDEPATH += $$PWD/../common
+DEPENDPATH += $$PWD/../common
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/libcommon.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/libcommon.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/common.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/common.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/libcommon.a
+
+
+unix:!macx: LIBS += -L$$PWD/../cep_profiler/build-cep_profiler-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lcep_profiler
+
+INCLUDEPATH += $$PWD/../cep_profiler/
+DEPENDPATH += $$PWD/../cep_profiler/
+
+unix:!macx: PRE_TARGETDEPS += $$PWD/../cep_profiler/build-cep_profiler-Desktop_Qt_5_7_0_GCC_64bit-Debug/libcep_profiler.a
+
+
+
+INCLUDEPATH += $$PWD/../markov_matrix

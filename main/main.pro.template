@@ -1,0 +1,113 @@
+QMAKE_CXXFLAGS+=-g
+#QMAKE_LFLAGS+=-g
+
+TEMPLATE = app
+CONFIG += console c++14
+CONFIG -= app_bundle
+CONFIG -= qt
+CONFIG += static
+
+QMAKE_LFLAGS_RELEASE =
+
+QMAKE_CXXFLAGS_RELEASE+=-O3
+QMAKE_CXXFLAGS_RELEASE-=-O2
+
+QMAKE_CFLAGS_RELEASE+=-O3
+QMAKE_CFLAGS_RELEASE-=-O2
+
+QMAKE_LFLAGS_RELEASE +=-O3
+QMAKE_LFLAGS_RELEASE-=-O2
+
+#QMAKE_CXXFLAGS += -fsanitize=address
+#QMAKE_CXXFLAGS += -fsanitize=undefined
+#QMAKE_LFLAGS += -fsanitize=address
+#QMAKE_LFLAGS += -fsanitize=undefined
+
+
+SOURCES += \
+    source/main.cpp
+
+
+unix: LIBS += -L$$PWD/../splitter/build-splitter-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lsplitter
+
+
+INCLUDEPATH += $$PWD/../splitter
+DEPENDPATH += $$PWD/../splitter
+
+unix: PRE_TARGETDEPS += $$PWD/../splitter/build-splitter-Desktop_Qt_5_7_0_GCC_64bit-Debug/libsplitter.a
+
+
+unix: LIBS += -L$$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lexecution_path
+
+INCLUDEPATH += $$PWD/../execution_path
+DEPENDPATH += $$PWD/../execution_path
+
+unix: PRE_TARGETDEPS += $$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/libexecution_path.a
+
+
+
+unix: LIBS += -L$$PWD/../source/build-source-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lsource
+
+INCLUDEPATH += $$PWD/../source
+DEPENDPATH += $$PWD/../source
+
+unix: PRE_TARGETDEPS += $$PWD/../source/build-source-Desktop_Qt_5_7_0_GCC_64bit-Debug/libsource.a
+
+
+unix: LIBS += -L$$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lmerger
+
+INCLUDEPATH += $$PWD/../merger
+DEPENDPATH += $$PWD/../merger
+
+unix: PRE_TARGETDEPS += $$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/libmerger.a
+
+
+
+
+unix: LIBS += -L$$PWD/../../../../../../../../../../../usr/lib/boost_1_61_0/stage/lib/ -lboost_thread
+
+INCLUDEPATH += $$PWD/../../../../../../../../../../../usr/include
+DEPENDPATH += $$PWD/../../../../../../../../../../../usr/include$$PWD
+
+unix: PRE_TARGETDEPS += $$PWD/../../../../../../../../../../../usr/lib/boost_1_61_0/stage/lib/libboost_thread.a
+
+
+unix: LIBS += -L$$PWD/../../../../../../../../../../../usr/lib/boost_1_61_0/stage/lib/ -lboost_system
+
+
+unix: PRE_TARGETDEPS += $$PWD/../../../../../../../../../../../usr/lib/boost_1_61_0/stage/lib/libboost_system.a
+
+
+unix: LIBS += -L$$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lcommon
+
+INCLUDEPATH += $$PWD/../common
+DEPENDPATH += $$PWD/../common
+
+unix: PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/libcommon.a
+
+unix: LIBS += -L$$PWD/../markov_matrix/build-Matrix-Desktop-Debug/ -lMatrix
+
+INCLUDEPATH += $$PWD/../markov_matrix/
+DEPENDPATH += $$PWD/../markov_matrix/
+
+unix: PRE_TARGETDEPS += $$PWD/../markov_matrix/build-Matrix-Desktop-Debug/libMatrix.a
+
+unix:!macx: LIBS += -L$$PWD/../cep_profiler/build-cep_profiler-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lcep_profiler
+
+INCLUDEPATH += $$PWD/../cep_profiler/
+DEPENDPATH += $$PWD/../cep_profiler/
+
+unix:!macx: PRE_TARGETDEPS += $$PWD/../cep_profiler/build-cep_profiler-Desktop_Qt_5_7_0_GCC_64bit-Debug/libcep_profiler.a
+
+
+
+unix: LIBS += -Wl,-Bstatic -L$$PWD/../../../../../../../../../../../usr/lib/boost_1_61_0/stage/lib/ -lboost_thread -lboost_system  -lboost_filesystem -Wl,-Bdynamic
+
+unix|win32: LIBS += -lpthread
+
+
+LIBS+=-Wl,--no-as-needed -ltcmalloc_minimal -Wl,--as-needed
+
+DISTFILES += \
+    build-main-Desktop_Qt_5_7_0_GCC_64bit-Debug/main
+

@@ -1,0 +1,42 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2016-10-10T08:58:36
+#
+#-------------------------------------------------
+
+QT       -= core gui
+QMAKE_CXXFLAGS+=-g
+#QMAKE_LFLAGS+=-g
+
+TARGET = cep_profiler
+TEMPLATE = lib
+CONFIG += staticlib
+
+
+QMAKE_CXXFLAGS_RELEASE+=-O3
+QMAKE_CXXFLAGS_RELEASE-=-O2
+QMAKE_CXXFLAGS_RELEASE-=-O1
+
+QMAKE_CFLAGS_RELEASE+=-O3
+QMAKE_CFLAGS_RELEASE-=-O2
+QMAKE_CFLAGS_RELEASE-=-O1
+
+SOURCES += \
+    source/Measurements.cpp \
+    source/ThroughputStat.cpp \
+    source/WorkerThreadStat.cpp \
+    source/DetectionLatencyStat.cpp \
+    source/PathManagerReschedulingFrequency.cpp
+
+HEADERS += \
+    header/Measurements.hpp \
+    header/ThroughputStat.hpp \
+    header/WorkerThreadStat.hpp \
+    header/DetectionLatencyStat.hpp \
+    header/PathManagerReschedulingFrequency.hpp
+unix {
+    target.path = /usr/lib
+    INSTALLS += target
+}
+
+DISTFILES +=

@@ -1,0 +1,101 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2016-08-28T16:15:39
+#
+#-------------------------------------------------
+
+QT       -= core gui
+QMAKE_CXXFLAGS+=-g
+#QMAKE_LFLAGS+=-g
+
+QMAKE_CXXFLAGS_RELEASE-=-O2
+QMAKE_CXXFLAGS_RELEASE+=-O3
+
+TARGET = splitter
+TEMPLATE = lib
+
+CONFIG += staticlib
+
+QMAKE_CXXFLAGS_RELEASE+=-O3
+QMAKE_CXXFLAGS_RELEASE-=-O2
+QMAKE_CXXFLAGS_RELEASE-=-O1
+
+QMAKE_CFLAGS_RELEASE+=-O3
+QMAKE_CFLAGS_RELEASE-=-O2
+QMAKE_CFLAGS_RELEASE-=-O1
+
+DEFINES += SPLITTER_LIBRARY
+
+CONFIG+=c++14
+
+SOURCES += \
+    source/predicates/SimplePredicate.cpp \
+    source/splitter/Splitter.cpp \
+    source/predicates/CountBasedPredicate.cpp \
+    source/predicates/SlidingWindowPredicate.cpp \
+    source/predicates/IBMtimePredicate.cpp
+
+HEADERS +=\
+    header/predicates/AbstractPredicate.hpp \
+    header/predicates/SimplePredicate.hpp \
+    header/splitter/Splitter.hpp \
+    header/predicates/CountBasedPredicate.hpp \
+    header/predicates/SlidingWindowPredicate.hpp \
+    header/predicates/IBMtimePredicate.hpp
+
+unix {
+    target.path = /usr/lib
+    INSTALLS += target
+}
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/ -lexecution_path
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/ -lexecution_path
+else:unix: LIBS += -L$$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lexecution_path
+
+INCLUDEPATH += $$PWD/../execution_path
+DEPENDPATH += $$PWD/../execution_path
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/libexecution_path.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/libexecution_path.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/execution_path.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/execution_path.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/libexecution_path.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/ -lmerger
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/ -lmerger
+else:unix: LIBS += -L$$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lmerger
+
+INCLUDEPATH += $$PWD/../merger
+DEPENDPATH += $$PWD/../merger
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/libmerger.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/libmerger.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/merger.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/merger.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../merger/build-merger-Desktop_Qt_5_7_0_GCC_64bit-Debug/libmerger.a
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/ -lcommon
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/ -lcommon
+else:unix: LIBS += -L$$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lcommon
+
+INCLUDEPATH += $$PWD/../common
+DEPENDPATH += $$PWD/../common
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/libcommon.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/libcommon.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/common.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/common.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/libcommon.a
+
+
+unix:!macx: LIBS += -L$$PWD/../cep_profiler/build-cep_profiler-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lcep_profiler
+
+INCLUDEPATH += $$PWD/../cep_profiler/
+DEPENDPATH += $$PWD/../cep_profiler/
+
+unix:!macx: PRE_TARGETDEPS += $$PWD/../cep_profiler/build-cep_profiler-Desktop_Qt_5_7_0_GCC_64bit-Debug/libcep_profiler.a
+
+
+INCLUDEPATH += $$PWD/../markov_matrix

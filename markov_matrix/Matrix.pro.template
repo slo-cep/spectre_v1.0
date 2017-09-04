@@ -1,0 +1,65 @@
+
+QMAKE_CXXFLAGS+=-g
+QMAKE_LFLAGS+=-g
+
+#TEMPLATE = app
+TEMPLATE = lib
+CONFIG += console
+CONFIG -= app_bundle
+CONFIG -= qt
+QMAKE_CXXFLAGS += -std=c++17
+#CONFIG += c++14
+
+QMAKE_CXXFLAGS_RELEASE+=-O3
+QMAKE_CXXFLAGS_RELEASE-=-O2
+QMAKE_CXXFLAGS_RELEASE-=-O1
+
+QMAKE_CFLAGS_RELEASE+=-O3
+QMAKE_CFLAGS_RELEASE-=-O2
+QMAKE_CFLAGS_RELEASE-=-O1
+
+
+LIBS += -lpthread
+INCLUDEPATH += $$PWD/Eigen
+
+CONFIG += staticlib
+
+SOURCES += source/markovmatrix.cpp
+
+HEADERS += \
+    header/markovmatrix.h
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/ -lexecution_path
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/ -lexecution_path
+else:unix: LIBS += -L$$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lexecution_path
+
+INCLUDEPATH += $$PWD/../execution_path
+DEPENDPATH += $$PWD/../execution_path
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/libexecution_path.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/libexecution_path.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/execution_path.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/execution_path.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../execution_path/build-execution_path-Desktop_Qt_5_7_0_GCC_64bit-Debug/libexecution_path.a
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/ -lcommon
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/ -lcommon
+else:unix: LIBS += -L$$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lcommon
+
+INCLUDEPATH += $$PWD/../common
+DEPENDPATH += $$PWD/../common
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/libcommon.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/libcommon.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/release/common.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/debug/common.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../common/build-common-Desktop_Qt_5_7_0_GCC_64bit-Debug/libcommon.a
+
+unix:!macx: LIBS += -L$$PWD/../cep_profiler/build-cep_profiler-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lcep_profiler
+
+INCLUDEPATH += $$PWD/../cep_profiler/
+DEPENDPATH += $$PWD/../cep_profiler/
+
+unix:!macx: PRE_TARGETDEPS += $$PWD/../cep_profiler/build-cep_profiler-Desktop_Qt_5_7_0_GCC_64bit-Debug/libcep_profiler.a

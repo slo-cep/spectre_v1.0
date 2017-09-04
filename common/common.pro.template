@@ -1,0 +1,104 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2016-08-28T13:43:32
+#
+#-------------------------------------------------
+
+QT       -= core gui
+QMAKE_CXXFLAGS+=-g
+#QMAKE_LFLAGS+=-g
+
+
+TARGET = common
+TEMPLATE = lib
+
+QMAKE_CXXFLAGS_RELEASE+=-O3
+QMAKE_CXXFLAGS_RELEASE-=-O2
+QMAKE_CXXFLAGS_RELEASE-=-O1
+
+QMAKE_CFLAGS_RELEASE+=-O3
+QMAKE_CFLAGS_RELEASE-=-O2
+QMAKE_CFLAGS_RELEASE-=-O1
+
+CONFIG += staticlib
+
+DEFINES += COMMON_LIBRARY
+
+CONFIG += c++14
+
+SOURCES += \
+    source/events/AbstractEvent.cpp \
+    source/events/ComplexEvent.cpp \
+    source/events/EndOfStreamEvent.cpp \
+    source/events/EventFactory.cpp \
+    source/events/PulseEvent.cpp \
+    source/events/SimpleValueEvent.cpp \
+    source/selection/Selection.cpp \
+    source/util/Constants.cpp \
+    source/util/GlobalParameter.cpp \
+    source/util/Helper.cpp \
+    source/util/Marshaller.cpp \
+    source/events/EndOfSelection.cpp \
+    source/selection/AbstractSelection.cpp \
+    source/selection/SimpleSelection.cpp \
+    source/selection/BasicSelection.cpp \
+    source/selection/BasicSelectionWithMinimumLock.cpp \
+    source/selection/SimpleSelectionWithMinimumLock.cpp \
+    source/shared_memory/ThreadSafeQueue.tpp \
+    source/selection/BasicSelectionWithoutLock.cpp \
+    source/selection/SimpleSelectionWithoutLock.cpp \
+    source/shared_memory/GlobalEventStreamList.cpp \
+    source/shared_memory/SourceSplitterQueue.cpp \
+    source/shared_memory/SourceSplitterLockfreeQueue.cpp
+
+HEADERS +=\
+    header/events/AbstractEvent.hpp \
+    header/events/ComplexEvent.hpp \
+    header/events/EndOfStreamEvent.hpp \
+    header/events/EventFactory.hpp \
+    header/events/PulseEvent.hpp \
+    header/events/SimpleValueEvent.hpp \
+    header/selection/Selection.hpp \
+    header/shared_memory/AbstractGlobalEventStream.hpp \
+    header/shared_memory/AbstractSourceSplitterStream.hpp \
+    header/shared_memory/GlobalEventStreamList.hpp \
+    header/shared_memory/SourceSplitterQueue.hpp \
+    header/util/Constants.hpp \
+    header/util/GlobalParameters.hpp \
+    header/util/GlobalTypedef.hpp \
+    header/util/Helper.hpp \
+    header/util/Marshaller.hpp \
+    header/events/events.hpp \
+    header/events/EndOfSelection.hpp \
+    header/selection/AbstractSelection.hpp \
+    header/selection/SimpleSelection.hpp \
+    header/selection/BasicSelection.hpp \
+    header/selection/BasicSelectionWithMinimumLock.hpp \
+    header/selection/SimpleSelectionWithMinimumLock.hpp \
+    header/shared_memory/ThreadSafeQueue.hpp \
+    header/shared_memory/LockfreeQueue.hpp \
+    header/selection/BasicSelectionWithoutLock.hpp \
+    header/selection/SimpleSelectionWithoutLock.hpp \
+    header/shared_memory/SourceSplitterLockfreeQueue.hpp \
+   # header/shared_memory/concurrentqueue.h \
+   # header/shared_memory/ConcurrentQueueWrapper.hpp
+    header/shared_memory/concurrentqueue.h \
+    header/shared_memory/ConcurrentQueueWrapper.hpp \
+    header/shared_memory/concurrentringbuffer.hpp
+
+unix {
+    target.path = /usr/lib
+    INSTALLS += target
+}
+
+DISTFILES +=
+
+
+
+
+unix:!macx: LIBS += -L$$PWD/../cep_profiler/build-cep_profiler-Desktop_Qt_5_7_0_GCC_64bit-Debug/ -lcep_profiler
+
+INCLUDEPATH += $$PWD/../cep_profiler/
+DEPENDPATH += $$PWD/../cep_profiler/
+
+unix:!macx: PRE_TARGETDEPS += $$PWD/../cep_profiler/build-cep_profiler-Desktop_Qt_5_7_0_GCC_64bit-Debug/libcep_profiler.a
