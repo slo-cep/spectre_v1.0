@@ -7,8 +7,8 @@ Dependencies (Linux):
 2- Install Google Performance Tools: gperftools
 
 Build & Run: 
-SPECTRE consists of several projects: source, splitter, etc. These projects are a QT project and hence to open and build them with QT creator, you need to rename *.pro.template to *.pro.
-The building results in several static libraries (one per project). These libraries are linked in the Main project that produces the excutable binary.
+SPECTRE consists of several plain C++ projects: source, splitter, etc. These projects are developed by QT creator and hence to open and build them with QT creator, you need to rename *.pro.template to *.pro.
+Building the projects results in several static libraries (one per project). These libraries are linked in the Main project that produces the excutable binary.
 
 Note: Be sure that Main.Pro contains the correct path to the generated libraries, boost library and google library.
 
