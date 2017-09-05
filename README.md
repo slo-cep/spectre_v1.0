@@ -13,10 +13,10 @@ Building the projects results in several static libraries (one per project). The
 Note: Be sure that Main.Pro contains the correct path to the generated libraries, boost library and google library.
 
 
-Usage Example:
+Usage:
 ex._name #thread event_type operator_type initial_event_per_window pattern_size window_size tree_depth checkpointing_frequency port_number alpha event_per_matrix
  step_size num_pre_calc Maxtix_min_factor garbage_state outputfiles... 
-./main 4 0 0 10000 13 10000 8 0 4000 0.700000 10000 200 120 1 false latencyDetectionFile eventsProcessedPerWorkersFile throughputFile reschedulingFrequencyFile
+ ./main 4 0 0 10000 13 10000 8 0 4000 0.700000 10000 200 120 1 false latencyDetectionFile eventsProcessedPerWorkersFile throughputFile reschedulingFrequencyFile
 
 *To have more insight about the above parameters, please check the code. It is  well commented :)
 
