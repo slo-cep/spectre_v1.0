@@ -3,7 +3,7 @@ About:
 SPECTRE project is a complex event processing framework that uses the speculation to process dependent widnows of events. For detail description, see our paper http://2017.middleware-conference.org/accepted.html .
 
 Dependencies (Linux):
-1- Install Boost C++ Library (not needed if you want to use only execuatble!)
+1- Install Boost C++ Library (not needed if you want to use the execuatble file ("main") only!)
 2- Install Google Performance Tools: gperftools
 
 Build & Run: 
